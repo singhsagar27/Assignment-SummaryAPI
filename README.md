@@ -50,7 +50,19 @@ python manage.py runserver
 ```
 
 # 📜 API Endpoints  
+## 🔑 Authentication (JWT)  
 
+### **1️⃣ Generate Access & Refresh Tokens**  
+```sh
+curl --location 'http://127.0.0.1:8000/api/token/' \
+--header 'Content-Type: application/json' \
+--data '{
+           "username": "sagar",
+           "password": "Yureka10"
+         }'
+```
+
+`
 ## 1️⃣ Generate Summary  
 
 ### 📌 Request:  
@@ -64,11 +76,25 @@ curl -X POST http://127.0.0.1:8000/api/generate-summary/ \
 ### 📌 Response:  
 ```sh
 {
-  "id": 1,
-  "original_text": "Artificial Intelligence (AI) is transforming industries.",
-  "summary": "AI is revolutionizing industries.",
-  "bullet_points": null,
-  "created_at": "2025-02-09T12:11:11.376995Z"
+  "refresh": "your_refresh_token_here",
+  "access": "your_access_token_here"
+}
+```
+
+## 1️⃣ Refresh Expired Access Token
+
+```sh
+curl --location 'http://127.0.0.1:8000/api/token/refresh/' \
+--header 'Content-Type: application/json' \
+--data '{
+           "refresh": "your_refresh_token_here"
+         }'
+```
+
+### 📌 Response:  
+```sh
+{
+  "access": "your_new_access_token_here"
 }
 ```
 
