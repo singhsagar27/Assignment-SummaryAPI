@@ -25,12 +25,6 @@ python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 
-### 2️⃣ Create a Virtual Environment
-```sh
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
-
 ### 3️⃣ Install Dependencies
 ```sh
 pip install -r requirements.txt
@@ -44,6 +38,7 @@ GROQ_MODEL=llama-3.3-70b-versatile
 
 ### 3️⃣ Apply Migrations & Create a Superuser
 ```sh
+cd summary_api
 python manage.py makemigrations summarizer
 python manage.py migrate
 python manage.py createsuperuser
